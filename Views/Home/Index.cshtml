@@ -1,0 +1,100 @@
+﻿@model Mycloth_website.Models.IndexViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie store</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/images/movie_filter_FILL0_wght400_GRAD0_opsz48.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color:aliceblue">
+    <div class='hero'>
+        <div class="hero-left">
+            <h2>NEW ARRIVALS ONLY</h2>
+            <div>
+                <div class="hero-hand-icon">
+                    <p>new</p>
+                    <img src="~/Assets/hand_icon.png" alt="" />
+                </div>
+                <p>collections</p>
+                <p>for everyone</p>
+            </div>
+            <div class="hero-latest-button">
+                <div>Latest Collection</div>
+                <img src="~/Assets/arrow.png" alt="" />
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="~/Assets/hero_image.png" alt="" />
+        </div>
+    </div>
+    <section class="movies">
+        @foreach (var item in Model.MenItems.Items.Take(6))
+        {
+            <div class='item'>
+                <a asp-action="MenDetails" asp-controller="Home" asp-route-id="@item.ProductId">
+                    <img src="~/Assets/@item.ProductImage" alt="" />
+            </a>
+                <p><b>@item.ProductName</b></p>
+            <p>@item.ProductDescription</p>
+            <div class="item-prices">
+                <div class="item-price-new">
+                            $@item.ProductPrice
+                </div>
+                <div class="item-price-old">
+                            $@item.DicountProductPrice
+                </div>
+            </div>
+        </div>
+        }    
+
+        @foreach (var item in Model.WomenItems.Items.Take(5))
+        {
+            
+            <div class='item'>
+                <a asp-action="WomenDetails" asp-controller="Home" asp-route-id="@item.ProductId">
+                    <img src="~/Assets/@item.ProductImage" alt="" />
+            </a>
+                <p><b>@item.ProductName</b></p>
+            <p>@item.ProductDescription</p>
+            <div class="item-prices">
+                <div class="item-price-new">
+                            $@item.ProductPrice
+                </div>
+                <div class="item-price-old">
+                            $@item.DicountProductPrice
+                </div>
+            </div>
+        </div>
+        
+        }    
+
+        @foreach (var item in Model.KidItems.Items.Take(5))
+        {
+            <div class='item'>
+                <a asp-action="KidDetails" asp-controller="Home" asp-route-id="@item.ProductId">
+                    <img src="~/Assets/@item.ProductImage" alt="" />
+                </a>
+                <p><b>@item.ProductName</b></p>
+                <p>@item.ProductDescription</p>
+                <div class="item-prices">
+                    <div class="item-price-new">
+                        $@item.ProductPrice
+                    </div>
+                    <div class="item-price-old">
+                        $@item.DicountProductPrice
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+</body>
+</html>
